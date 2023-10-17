@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Save the Date. XV Ivonne</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="invitacionesparaeventos.com" />
+
+    <meta property="og:type" content="website" />
+    <meta property="fb:app_id" content="769975460829929" />
+    <meta property="og:url" content="http://xvivonne.com/" />
+    <meta property="og:title" content="Save the date. XV Ivonne" />
+    <meta property="og:description" content="!Ya casi son mis XV!" />
+    <meta property="og:image" content="https://xvivonne.com/Save_Date.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- <base href="/i/v2/"> -->
+
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Diphylleia&family=Parisienne&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&family=Tangerine:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <script src="https://www.invitacionesparaeventos.com/include/js/jquery-3.2.1.min.js"></script>
+    <script src="https://www.invitacionesparaeventos.com/include/js/lazy/lazysizes.min.js"></script>
+
+    <link
+      href="https://www.invitacionesparaeventos.com/include/js/aos/aos.css"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://www.invitacionesparaeventos.com/include/js/aos/aos.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://www.invitacionesparaeventos.com/i/v2/estilos/fonts/flaticon4/flaticon.css?v=6798"
+    />
+
+    <link
+      href="https://www.invitacionesparaeventos.com/i/v2/estilos/general.css?v=6798"
+      rel="stylesheet"
+    />
+    <link
+      href="https://www.invitacionesparaeventos.com/i/v2/estilos/generalSave.css?v=6798"
+      rel="stylesheet"
+    />
+    <link
+      href="https://www.invitacionesparaeventos.com/i/v2/estilos/2023v1.css?v=6798"
+      rel="stylesheet"
+    />
+    <link href="/static/assets/save/css/skull.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../../static/assets/save/favicon.ico"
+    />
+    <script src="https://www.invitacionesparaeventos.com/i/v2/funciones.js?v=6798"></script>
+    <style>
+      .contenedorScrollI {
+        display: none;
+      }
+    </style>
+
+    <script>
+      var token = "1260";
+      var archivoAjax = "../v2.php?token=1260";
+      var modoInvitacion = "publicoSave";
+      var audioFull = "0";
+
+      document.addEventListener("DOMContentLoaded", () => owlCargado());
+      function owlCargado() {
+        if ($("#timer").length) {
+          $("#timer")
+            .countdown("2023/11/11 14:30")
+            .on("update.countdown", function (event) {
+              var $this = $(this).html(
+                event.strftime(
+                  "" +
+                    introTimer +
+                    '<div class="timerContenedorNumeros"><div class="timerElemento"><div class="timerNumero">%D</div><div class="timerTexto">Días</div></div><div class="timerLinea">&nbsp;</div>' +
+                    '<div class="timerElemento"><div class="timerNumero">%H</div><div class="timerTexto">Horas</div></div><div class="timerLinea">&nbsp;</div>' +
+                    '<div class="timerElemento"><div class="timerNumero">%M</div><div class="timerTexto">Minutos</div></div><div class="timerLinea">&nbsp;</div>' +
+                    '<div class="timerElemento"><div class="timerNumero">%S</div><div class="timerTexto">Segundos</div></div></DIV>'
+                )
+              );
+            });
+        }
+      }
+    </script>
+    <style>
+      /* Estilos del modal */
+      .modal {
+        display: none; /* Ocultar el modal por defecto */
+        position: fixed; /* Posición fija para superponerlo al contenido */
+        z-index: 1; /* Superponer el modal sobre el resto del contenido */
+        left: 0;
+        top: 0;
+        width: 100%; /* Ancho completo del modal */
+        height: 100%; /* Altura completa del modal */
+        overflow: auto; /* Habilitar el desplazamiento si el contenido es demasiado largo */
+        background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
+      }
+
+      /* Estilos del contenido del modal */
+      .modal-content {
+        background-color: #000000d9;
+        margin: 15% auto; /* Centrar vertical y horizontalmente */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px; /* Ancho máximo del modal */
+        border-radius: 15px;
+        text-align: center;
+        font-family: "Diphylleia";
+        font-size: x-large;
+        color: #ffffff;
+      }
+
+      /* Estilos del botón de cierre del modal */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body onload="openModal()">
+    <div class="contenedorScroll">
+      <div class="contenedorScrollI contenedorScrollI1a"></div>
+      <div class="contenedorScrollI contenedorScrollI1"></div>
+      <div class="contenedorScrollI contenedorScrollI2a"></div>
+      <div class="contenedorScrollI contenedorScrollI2"></div>
+      <div class="contenedorSave">
+        <style>
+          .fondoPersonalizado {
+            position: fixed;
+            z-index: -101;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125%; /* To compensate for mobile browser address bar space */
+            background: url() no-repeat center center;
+            background-size: cover;
+          }
+
+          @media only screen and (max-width: 600px) {
+            html {
+              background: url() no-repeat center center fixed;
+              background-size: cover;
+            }
+            .fondoPersonalizado {
+              display: none;
+            }
+          }
+        </style>
+
+        <div class="fondoPersonalizado">&nbsp;</div>
+        <div
+          class="contenedor fondoInternoContain fondoBloque0 parH_80 vcenter headerDinamico_C"
+        >
+          <div class="contenedorInterior">
+            <div
+              class="headerDinamico_Ti"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            >
+              Ivonne
+            </div>
+            <div
+              class="headerDinamico_Ta"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            ></div>
+            <div
+              class="headerDinamico_Te"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            ></div>
+            <div
+              class="headerDinamico_Tb"
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+            ></div>
+          </div>
+        </div>
+        <div class="contenedor fondoInternoContain fondoBloque0">
+          <div class="separadorImagenSola contenedorInterior">
+            <div class="lGrandes_Ti"></div>
+            <div class="lGrandes_Te"></div>
+            <!-- <img src="https://www.invitacionesparaeventos.com/recursos//rev/Sueo-de-Da/40467_separadorBase.webp" class="" style="width:60%" id="imagen_11654"> -->
+          </div>
+        </div>
+        <div class="contenedor fondoInternoContain fondoBloque0">
+          <div class="contenedorInterior savePieContenedorInterior">
+            <div class="savePie_Ti" style="font-family: 'Diphylleia', serif">
+              ¡Ya casi son mis XV!
+            </div>
+            <br />
+            <div
+              class="save_Ti"
+              data-aos="fade-up"
+              style="font-family: 'Diphylleia', serif"
+            >
+              11 de Noviembre
+            </div>
+            <div
+              class="savePie_Te"
+              data-aos="fade-up"
+              style="font-family: 'Diphylleia', serif; font-size: x-large"
+            >
+              &iexcl;Reserva esta fecha!
+            </div>
+            <div
+              class="savePie_Te"
+              data-aos="fade-up"
+              style="font-family: 'Diphylleia', serif; font-size: x-large"
+            >
+              En breve recibirás tu invitación detallada para que nos acompañes.
+            </div>
+          </div>
+        </div>
+        <div
+          class="calendarioBadges calendarioBadgesBottom"
+          style="margin: 0 !important"
+        >
+          <div class="calendarioBadge">
+            <a href="https://bit.ly/3E7eMOZ" target="_self">
+              <img
+                src="https://www.invitacionesparaeventos.com/recursos/elementos/calendarioGeneral.png?v=3"
+              />
+            </a>
+          </div>
+          <div class="calendarioBadge">
+            <a href="https://bit.ly/3O0i1gR" target="_self">
+              <img
+                src="https://www.invitacionesparaeventos.com/recursos/elementos/calendarioGoogle.png?v=5"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class="savePie_Te"
+          data-aos="fade-up"
+          style="font-family: 'Diphylleia', serif; font-size: x-large"
+        >
+          Jiutepec, Morelos
+        </div>
+        <div class="desarrolloCont contenedor"></div>
+      </div>
+      <!--<div class="contenedorSaveBajo">&nbsp;</div>-->
+    </div>
+    <!-- El modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p>¿Deseas activar el audio?</p>
+        <button
+          style="
+            background: none;
+            border: none;
+            font-family: 'Diphylleia';
+            font-size: larger;
+            cursor: pointer;
+            color: #ffffff;
+          "
+          id="audioPlay2"
+        >
+          Si
+        </button>
+        <button
+          style="
+            background: none;
+            border: none;
+            font-family: 'Diphylleia';
+            font-size: larger;
+            cursor: pointer;
+            color: #ffffff;
+          "
+          onclick="closeModal()"
+        >
+          No
+        </button>
+      </div>
+    </div>
+    <!-- <div class="audioContenedorG" id="audioPlay2">
+      <img src="./img/tocar.png" class="audioIconoG" id="audioIcono2" />
+    </div> -->
+    <!-- <script>
+      $(function () {
+        new universalParallax().init({ speed: 4 });
+      });
+    </script> -->
+    <!-- <script
+      data-cfasync="false"
+      src="https://www.invitacionesparaeventos.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script> -->
+    <script>
+      //audioFull = "1";
+      $("#audioPlay2,#audioPlay2t").click(function () {
+        $("#audioPlay").trigger("click");
+        $("#audioContenedorGP").hide();
+        closeModal();
+        if (typeof AOS !== "undefined") AOS.init();
+      });
+    </script>
+    <script>
+      // Obtener referencia al modal y al botón de cierre
+      var modal = document.getElementById("myModal");
+      var closeBtn = document.getElementsByClassName("close")[0];
+
+      // Función para abrir el modal
+      function openModal() {
+        modal.style.display = "block";
+      }
+
+      // Función para cerrar el modal
+      function closeModal() {
+        modal.style.display = "none";
+      }
+    </script>
+    <script defer src="https://player.vimeo.com/api/player.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => vimeoCargado());
+
+      function vimeoCargado() {
+        var iframeVimeo = document.querySelector("#frameVimeo");
+        var audioplayer = document.getElementById("audioObjeto");
+        var inicioaudio = false;
+        var playerVimeo;
+
+        // function handleLazyLoad() {
+        //   if (iframeVimeo.classList.contains("lazyload")) {
+        //     const storeSRC = iframeVimeo.dataset.src;
+
+        //     iframeVimeo.addEventListener("lazyloaded", () => {
+        //       delete iframeVimeo.dataset.src;
+        //       iframeVimeo.src = storeSRC;
+        //       initPlayer();
+        //     });
+        //   }
+        // }
+
+        $("#audioPlay").click(function () {
+          if (audioplayer.paused) {
+            audioplayer.play();
+            $("#audioIcono").attr("src", "/static/assets/save/img/pausa.png");
+            inicioaudio = true;
+            if (playerVimeo) {
+              playerVimeo.unload();
+            }
+          } else {
+            inicioaudio = false;
+            audioplayer.pause();
+            $("#audioIcono").attr("src", "/static/assets/save/img/tocar.png");
+          }
+          $(this).toggleClass("pause");
+        });
+
+        function initPlayer() {
+          playerVimeo = new Vimeo.Player(iframeVimeo);
+          playerVimeo.ready().then(function () {
+            console.log("player is ready!");
+
+            setTimeout(function () {
+              // Now these events attach as I would like them to ?
+              playerVimeo.on("play", function () {
+                if (inicioaudio) {
+                  audioplayer.pause();
+                  $("#audioIcono").attr(
+                    "src",
+                    "/static/assets/save/img/tocar.png"
+                  );
+                }
+              });
+
+              playerVimeo.on("pause", function () {
+                if (inicioaudio) {
+                  audioplayer.play();
+                  $("#audioIcono").attr(
+                    "src",
+                    "/static/assets/save/img/pausa.png"
+                  );
+                }
+              });
+            }, 1000);
+          });
+        }
+
+        // handleLazyLoad();
+      }
+    </script>
+    <audio controls loop id="audioObjeto" style="display: none">
+      <source
+        src="/static/assets/save/Birth of the Rider.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+    <div
+      class="audioContenedor"
+      id="audioPlay"
+      style="box-shadow: none !important"
+    >
+      <img
+        src="/static/assets/save/img/tocar.png"
+        class="audioIcono"
+        id="audioIcono"
+      />
+    </div>
+  </body>
+</html>

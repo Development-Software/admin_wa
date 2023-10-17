@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html
+        class="dark-style layout-menu-fixed"
+        data-assets-path="../static/assets/"
+        data-template="vertical-menu-template-free"
+        data-theme="theme-default"
+        dir="ltr"
+        lang="en"
+>
+<head>
+    <meta charset="utf-8"/>
+    <meta
+            content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+            name="viewport"
+    />
+    <title>Control de invitados</title>
+    <meta content="" name="description"/>
+    <!-- Favicon -->
+    <link
+            rel="icon"
+            type="image/x-icon"
+            href="../../static/assets/save/favicon.ico"
+    />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+            rel="stylesheet"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="../static/assets/vendor/fonts/fontawesome.css"
+    /> -->
+    <script
+            src="https://kit.fontawesome.com/c0fe63b6ac.js"
+            crossorigin="anonymous"
+    ></script>
+    <!-- Icons. Uncomment required icon fonts -->
+    <link href="../static/assets/vendor/fonts/boxicons.css" rel="stylesheet"/>
+    <!-- Estilo RTL -->
+    <link
+            rel="stylesheet"
+            href="../static/assets/vendor/css/rtl/theme-default-dark.css"
+    />
+    <link
+            rel="stylesheet"
+            href="../static/assets/vendor/css/rtl/core-dark.css"
+    />
+    <link href="../static/assets/css/demo.css" rel="stylesheet"/>
+    <!-- Vendors CSS -->
+    <link
+            href="../static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"
+            rel="stylesheet"
+    />
+    <link
+            href="../static/assets/vendor/libs/apex-charts/apex-charts.css"
+            rel="stylesheet"
+    />
+    <!-- Page CSS -->
+    <!-- Helpers -->
+    <script src="../static/assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../static/assets/js/config.js"></script>
+    <!-- Estilos propios -->
+    <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            width: 16.6%;
+            padding: 6px; /* Solo para dar espacio al contenido en las celdas */
+            /* border: 1px solid rgb(255, 255, 255); Agrega bordes para mayor claridad */
+        }
+
+        .ocultar {
+            display: none;
+        }
+
+        .centrar {
+            text-align: center !important;
+        }
+
+        .btn-primary_add {
+            color: #fff !important;
+            background-color: #696cff !important;
+            border-color: #696cff !important;
+            box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4) !important;
+        }
+
+        .message_error {
+            color: rgb(255, 255, 255);
+            display: none;
+            font-size: small;
+        }
+
+        .bg-light_bs {
+            background-color: #f8f9fa !important;
+            color: #212529 !important;
+        }
+
+        .rounded-pill_bs {
+            border-radius: 50rem !important;
+            width: 80%;
+        }
+
+        .selected_row {
+            background-color: #f0f0f0 !important; /* Cambiar el color de fondo cuando se selecciona */
+        }
+    </style>
+    <!-- librerias propias -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link
+            href="../static/assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css"
+            rel="stylesheet"
+    />
+    <!-- Bootstrap JS (including Popper) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include SweetAlert CSS and JavaScript -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.datatables.net/searchpanes/2.2.0/js/dataTables.searchPanes.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+</head>
+<body>
+<!-- Layout wrapper -->
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <!-- Menu -->
+        <aside
+                class="layout-menu menu-vertical menu bg-menu-theme"
+                id="layout-menu"
+        >
+            <div class="app-brand demo">
+                <!-- Logo ivonne -->
+                <a
+                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none"
+                        href="javascript:void(0);"
+                >
+                    <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                </a>
+            </div>
+            <div class="menu-inner-shadow"></div>
+            <ul class="menu-inner py-1">
+                <!-- Dashboard -->
+                <li class="menu-item">
+                    <a class="menu-link" href="dashboard">
+                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                        <div data-i18n="Analytics">Invitados</div>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a class="menu-link" href="invites">
+                        <i class="menu-icon tf-icons bx bx-collection"></i>
+                        <div data-i18n="Basic">Control de Invitaciones</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="food_control">
+                        <i class="menu-icon tf-icons bx bx-collection"></i>
+                        <div data-i18n="Basic">Control desayuno</div>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <!-- / Menu -->
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Navbar -->
+            <nav
+                    class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                    id="layout-navbar"
+            >
+                <div
+                        class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none"
+                >
+                    <a
+                            class="nav-item nav-link px-0 me-xl-4"
+                            href="javascript:void(0)"
+                    >
+                        <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </div>
+                <div
+                        class="navbar-nav-right d-flex align-items-center"
+                        id="navbar-collapse"
+                >
+                    <!-- Search -->
+                    <div class="navbar-nav align-items-center">
+                        <div class="nav-item d-flex align-items-center"></div>
+                    </div>
+                    <!-- /Search -->
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                        <!-- User -->
+                        <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                            <div class="row">
+                                <div class="col-9">
+                                    <a class="dropdown-item" href="#">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar avatar-online">
+                                                    <img
+                                                            alt=""
+                                                            class="w-px-40 h-auto rounded-circle"
+                                                            src="../static/assets/img/avatars/usuario.png"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <span class="fw-semibold d-block">{{ name }}</span>
+                                                <small class="text-muted">Admin</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-3">
+                                    <a>
+                                        <form action="/logout" method="POST">
+                                            <button
+                                                    type="submit"
+                                                    class="dropdown-item"
+                                                    style="background-color: transparent; border: none"
+                                            >
+                                                <i class="bx bx-log-out"></i>
+                                            </button>
+                                        </form>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                        </li>
+                        <!--/ User -->
+                    </ul>
+                </div>
+            </nav>
+            <!-- / Navbar -->
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+                <div class="container-fluid flex-grow-1 container-p-y">
+                    <h4 class="fw-bold py-3 mb-4">
+                        <span class="text-muted fw-light">Control/</span> Invitaciones
+                    </h4>
+                    <div class="card">
+                        <div class="card-datatable table-responsive">
+                            <div
+                                    id="DataTables_Table_0_wrapper"
+                                    class="dataTables_wrapper dt-bootstrap5 no-footer"
+                            >
+                                <div class="card-header flex-column flex-md-row">
+                                    <div class="head-label text-center"></div>
+                                    <div class="dt-action-buttons text-end pt-3 pt-md-0">
+                                        <div class="dt-buttons">
+                                            <button
+                                                    class="dt-button btn btn-primary_add"
+                                                    id="bulk_send"
+                                            >
+                                                Enviar seleccionadas
+                                            </button>
+                                            <button
+                                                    class="dt-button btn btn-primary_add"
+                                                    id="bulk_confirm"
+                                            >
+                                                Confirmar seleccionadas
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                        class="dataTables_wrapper dt-bootstrap5 no-footer text-nowrap"
+                                        id="table_invite"
+                                        style="padding: 15px"
+                                >
+                                    <table
+                                            class="datatables-basic table border-top"
+                                            id="Grid_invite"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th class="centrar">
+                                                <input
+                                                        type="checkbox"
+                                                        class="dt-checkboxes form-check-input"
+                                                        id="check_all"
+                                                />
+                                            </th>
+                                            <th class="ocultar">ID</th>
+                                            <th style="width: 20% !important">Nombre</th>
+                                            <th class="ocultar">Teléfono</th>
+                                            <th class="centrar">Total</th>
+                                            <th class="centrar">Estatus</th>
+                                            <th class="centrar"># Envios</th>
+                                            <th class="ocultar"># Vistas</th>
+                                            <th class="ocultar">Desayuno</th>
+                                            <th class="ocultar">Hospedaje</th>
+                                            <th class="centrar">Confirmación</th>
+                                            <th class="centrar">Envio</th>
+                                            <th class="centrar">Hotel</th>
+                                            <th class="centrar">Ult.Act.</th>
+                                            <th class="centrar"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="table-border-bottom-0">
+                                        {% for fila in datos %}
+                                        <tr>
+                                            <td class="centrar">
+                                                <input
+                                                        type="checkbox"
+                                                        class="dt-checkboxes form-check-input"
+                                                />
+                                            </td>
+                                            <td class="ocultar">{{fila[0]}}</td>
+                                            <td style="width: 20% !important">{{fila[1]}}</td>
+                                            <td class="ocultar">{{fila[2]}}</td>
+                                            <td class="centrar">{{fila[3]}}</td>
+                                            <td class="centrar">
+                                                {% if fila[4] == 'created' %}
+                                                <span class="badge rounded-pill_bs bg-primary"
+                                                >creada</span
+                                                >
+                                                {% elif fila[4]=='sent' %}
+                                                <span class="badge rounded-pill_bs bg-success"
+                                                >enviada</span
+                                                >
+                                                {% elif fila[4]=='updated' %}
+                                                <span class="badge rounded-pill_bs bg-dark"
+                                                >actualizada</span
+                                                >
+                                                {% elif fila[4]=='income' %}
+                                                <span class="badge rounded-pill_bs bg-info"
+                                                >vista</span
+                                                >
+                                                {% elif fila[4]=='confirmed' %}
+                                                <span class="badge rounded-pill_bs bg-secondary"
+                                                >confirmada</span
+                                                >
+                                                {% elif fila[4]=='error' %}
+                                                <span class="badge rounded-pill_bs bg-danger"
+                                                >error</span
+                                                >
+                                                {% elif fila[4]=='no_confirmed' %}
+                                                <span class="badge rounded-pill_bs bg-danger"
+                                                >No asistirá</span
+                                                >
+                                                {% endif %}
+                                            </td>
+                                            <td class="centrar">{{fila[5]}}</td>
+                                            <td class="ocultar">{{fila[6]}}</td>
+                                            <td class="ocultar">{{fila[7]}}</td>
+                                            <td class="ocultar">{{fila[8]}}</td>
+                                            <td class="centrar">
+                                                <button id="confirm" class="btn confirm">
+                                                    <i class="fa-regular fa-calendar-check"></i>
+                                                </button>
+                                            </td>
+                                            <td class="centrar">
+                                                <button id="send" class="btn send">
+                                                    <i class="fa-regular fa-paper-plane"></i>
+                                                </button>
+                                            </td>
+                                            <td class="centrar">
+                                                <button id="room" class="btn room">
+                                                    <i class="fa-regular fa-solid fa-hotel"></i>
+                                                </button>
+                                            </td>
+                                            <td class="centrar">{{fila[9]}}</td>
+                                            <td class="details-control">
+                                                <button id="more" class="btn more">
+                                                    <i class="fa-solid fa-square-caret-down"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / Content -->
+                <!-- Footer -->
+                <footer class="content-footer footer bg-footer-theme">
+                    <div
+                            class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column"
+                    >
+                        <div class="mb-2 mb-md-0">
+                            ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            , Omarcini. All rights reserved.
+                        </div>
+                    </div>
+                </footer>
+                <!-- / Footer -->
+                <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
+    </div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+</div>
+<!-- / Layout wrapper -->
+<!-- Layout modals -->
+<!--/layout modals -->
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<!-- <script src="../static/assets/vendor/libs/jquery/jquery.js"></script> -->
+<script src="../static/assets/vendor/libs/popper/popper.js"></script>
+<script src="../static/assets/vendor/js/bootstrap.js"></script>
+<script src="../static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script src="../static/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script src="../static/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+<script src="../static/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+<!-- Main JS -->
+<script src="../static/assets/js/main.js"></script>
+<!-- Page JS -->
+<script src="../static/assets/js/dashboards-analytics.js"></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script
+        async=""
+        defer=""
+        src="https://buttons.github.io/buttons.js"
+></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var selectAllCheckbox = document.getElementById("check_all");
+        var checkboxes = document.querySelectorAll(".dt-checkboxes");
+
+        selectAllCheckbox.addEventListener("change", function () {
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = selectAllCheckbox.checked;
+                updateRowSelection(checkbox);
+            });
+        });
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener("change", function () {
+                updateRowSelection(checkbox);
+            });
+        });
+
+        function updateRowSelection(checkbox) {
+            var row = checkbox.closest("tr");
+        }
+    });
+
+    $(document).ready(function () {
+        var gridGuestTable = $("#Grid_invite").DataTable({
+            columnDefs: [{orderable: false, targets: 0}],
+            stateSave: true,
+            searching: true,
+            dom: "Bfrtip",
+            buttons: [
+                {
+                    extend: "excel",
+                    title: "Invitados",
+                    className: "btn btn-primary_add",
+                    text: "Exportar a Excel",
+                    exportOptions: {
+                        columns: [1, 2, 3, 4, 5],
+                    },
+                },
+            ],
+        });
+        $("#Grid_invite").on("click", ".more", function () {
+            var tr = $(this).closest("tr");
+            var row = gridGuestTable.row(tr);
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass("shown");
+            } else {
+                // Open this row
+                row.child(format(row.data())).show();
+                tr.addClass("shown");
+            }
+        });
+
+        function format(d) {
+            id_postday = "";
+            id_room = "";
+            if (d[8] == 0) {
+                id_postday =
+                    '<input type="checkbox"class="dt-checkboxes form-check-input" disabled/>';
+            } else {
+                id_postday =
+                    '<input type="checkbox"class="dt-checkboxes form-check-input" checked disabled/>';
+            }
+            if (d[9] == 0) {
+                id_room =
+                    '<input type="checkbox"class="dt-checkboxes form-check-input" disabled/>';
+            } else {
+                id_room =
+                    '<input type="checkbox"class="dt-checkboxes form-check-input" checked disabled/>';
+            }
+            return (
+                '<div class="row" style="text-align:center;"> ' +
+                '<div class="col-md-6">Numero de vistas:   <span class="badge badge-center bg-label-info">' +
+                d[7] +
+                '</span></div><div class="col-md-6">Desayuno:  ' +
+                id_postday +
+                "</div>" +
+                '<div class="col-md-6">Numero de envios:  <span class="badge badge-center bg-label-success">' +
+                d[6] +
+                '</span></div><div class="col-md-6">Hospedaje:   ' +
+                id_room +
+                "</div>" +
+                "</div>"
+            );
+        }
+
+        $("#Grid_invite").on("click", ".send", function () {
+            var tr = $(this).closest("tr");
+            var row = gridGuestTable.row(tr);
+            $.ajax("/send_invitation", {
+                type: "POST",
+                data: {
+                    id: row.data()[1],
+                },
+                success: function (data) {
+                    if (data.success) {
+                        Swal.fire({
+                            title: "Enviado",
+                            text: data.message,
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: data.message,
+                            icon: "error",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+            });
+        });
+
+        $("#Grid_invite").on("click", ".confirm", function () {
+            var tr = $(this).closest("tr");
+            var row = gridGuestTable.row(tr);
+            $.ajax("/send_confirm", {
+                type: "POST",
+                data: {
+                    id: row.data()[1],
+                },
+                success: function (data) {
+                    if (data.success) {
+                        Swal.fire({
+                            title: "Enviado",
+                            text: data.message,
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: data.message,
+                            icon: "error",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+            });
+        });
+
+        $("#Grid_invite").on("click", ".room", function () {
+            var tr = $(this).closest("tr");
+            var row = gridGuestTable.row(tr);
+            $.ajax("/send_room", {
+                type: "POST",
+                data: {
+                    id_guest: row.data()[1],
+                },
+                success: function (data) {
+                    if (data.success) {
+                        Swal.fire({
+                            title: "Enviado",
+                            text: data.message,
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: data.message,
+                            icon: "error",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+            });
+        });
+
+        $("#bulk_send").click(function () {
+            var selectedCheckboxes = [];
+
+            $(".dt-checkboxes:checked").each(function () {
+                var row = $(this).closest("tr");
+                var id = row.find("td:eq(1)").text();
+
+                selectedCheckboxes.push({
+                    id: id,
+                });
+            });
+
+            $.ajax({
+                url: "/send_bulk_invite",
+                type: "POST",
+                data: JSON.stringify(selectedCheckboxes),
+                contentType: "application/json",
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Enviado",
+                            text: response.message,
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: response.message,
+                            icon: "error",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+                },
+            });
+        });
+
+        $("#bulk_confirm").click(function () {
+            var selectedCheckboxes = [];
+            console.log("click");
+            $(".dt-checkboxes:checked").each(function () {
+                var row = $(this).closest("tr");
+                var id = row.find("td:eq(1)").text();
+
+                selectedCheckboxes.push({
+                    id: id,
+                });
+            });
+
+            $.ajax({
+                url: "/send_bulk_confirm",
+                type: "POST",
+                data: JSON.stringify(selectedCheckboxes),
+                contentType: "application/json",
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            title: "Enviado",
+                            text: response.message,
+                            icon: "success",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: response.message,
+                            icon: "error",
+                            confirmButtonText: "Aceptar",
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+                error: function (error) {
+                    console.error("Error:", error);
+                },
+            });
+        });
+    });
+</script>
+</body>
+</html>
