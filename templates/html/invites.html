@@ -296,17 +296,9 @@
                                             <th class="ocultar">ID</th>
                                             <th style="width: 20% !important">Nombre</th>
                                             <th class="ocultar">Teléfono</th>
-                                            <th class="centrar">Total</th>
                                             <th class="centrar">Estatus</th>
-                                            <th class="centrar"># Envios</th>
-                                            <th class="ocultar"># Vistas</th>
-                                            <th class="ocultar">Desayuno</th>
-                                            <th class="ocultar">Hospedaje</th>
                                             <th class="centrar">Confirmación</th>
                                             <th class="centrar">Envio</th>
-                                            <th class="centrar">Hotel</th>
-                                            <th class="centrar">Ult.Act.</th>
-                                            <th class="centrar"></th>
                                         </tr>
                                         </thead>
                                         <tbody class="table-border-bottom-0">
@@ -321,42 +313,37 @@
                                             <td class="ocultar">{{fila[0]}}</td>
                                             <td style="width: 20% !important">{{fila[1]}}</td>
                                             <td class="ocultar">{{fila[2]}}</td>
-                                            <td class="centrar">{{fila[3]}}</td>
                                             <td class="centrar">
-                                                {% if fila[4] == 'created' %}
+                                                {% if fila[3] == 'created' %}
                                                 <span class="badge rounded-pill_bs bg-primary"
                                                 >creada</span
                                                 >
-                                                {% elif fila[4]=='sent' %}
+                                                {% elif fila[3]=='sent' %}
                                                 <span class="badge rounded-pill_bs bg-success"
                                                 >enviada</span
                                                 >
-                                                {% elif fila[4]=='updated' %}
+                                                {% elif fila[3]=='updated' %}
                                                 <span class="badge rounded-pill_bs bg-dark"
                                                 >actualizada</span
                                                 >
-                                                {% elif fila[4]=='income' %}
+                                                {% elif fila[3]=='income' %}
                                                 <span class="badge rounded-pill_bs bg-info"
                                                 >vista</span
                                                 >
-                                                {% elif fila[4]=='confirmed' %}
+                                                {% elif fila[3]=='confirmed' %}
                                                 <span class="badge rounded-pill_bs bg-secondary"
                                                 >confirmada</span
                                                 >
-                                                {% elif fila[4]=='error' %}
+                                                {% elif fila[3]=='error' %}
                                                 <span class="badge rounded-pill_bs bg-danger"
                                                 >error</span
                                                 >
-                                                {% elif fila[4]=='no_confirmed' %}
+                                                {% elif fila[3]=='no_confirmed' %}
                                                 <span class="badge rounded-pill_bs bg-danger"
                                                 >No asistirá</span
                                                 >
                                                 {% endif %}
                                             </td>
-                                            <td class="centrar">{{fila[5]}}</td>
-                                            <td class="ocultar">{{fila[6]}}</td>
-                                            <td class="ocultar">{{fila[7]}}</td>
-                                            <td class="ocultar">{{fila[8]}}</td>
                                             <td class="centrar">
                                                 <button id="confirm" class="btn confirm">
                                                     <i class="fa-regular fa-calendar-check"></i>
@@ -365,17 +352,6 @@
                                             <td class="centrar">
                                                 <button id="send" class="btn send">
                                                     <i class="fa-regular fa-paper-plane"></i>
-                                                </button>
-                                            </td>
-                                            <td class="centrar">
-                                                <button id="room" class="btn room">
-                                                    <i class="fa-regular fa-solid fa-hotel"></i>
-                                                </button>
-                                            </td>
-                                            <td class="centrar">{{fila[9]}}</td>
-                                            <td class="details-control">
-                                                <button id="more" class="btn more">
-                                                    <i class="fa-solid fa-square-caret-down"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -464,18 +440,18 @@
             columnDefs: [{orderable: false, targets: 0}],
             stateSave: true,
             searching: true,
-            dom: "Bfrtip",
-            buttons: [
-                {
-                    extend: "excel",
-                    title: "Invitados",
-                    className: "btn btn-primary_add",
-                    text: "Exportar a Excel",
-                    exportOptions: {
-                        columns: [1, 2, 3, 4, 5],
-                    },
-                },
-            ],
+            //dom: "Bfrtip",
+            // buttons: [
+            //     {
+            //         extend: "excel",
+            //         title: "Invitados",
+            //         className: "btn btn-primary_add",
+            //         text: "Exportar a Excel",
+            //         exportOptions: {
+            //             columns: [1, 2, 3, 4, 5],
+            //         },
+            //     },
+            // ],
         });
         $("#Grid_invite").on("click", ".more", function () {
             var tr = $(this).closest("tr");
@@ -528,6 +504,7 @@
         $("#Grid_invite").on("click", ".send", function () {
             var tr = $(this).closest("tr");
             var row = gridGuestTable.row(tr);
+            console.log(row.data()[1]);
             $.ajax("/send_invitation", {
                 type: "POST",
                 data: {

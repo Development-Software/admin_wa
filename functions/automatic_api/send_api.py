@@ -10,15 +10,15 @@ def send_invite(id_guest):
         conn = connect_db()
         cursor = conn.cursor()
         cursor.execute(
-            f"SELECT id_guest,phone,name,url,id_postday,name_legal FROM guests WHERE id_guest='{id_guest}'"
+            f"SELECT id_guest,phone,name,name_legal FROM guests WHERE id_guest='{id_guest}'"
         )
         rows = cursor.fetchall()
         conn.close()
         print("test")
         for row in rows:
             if row[1] is not None:
-                url_invite = short_url(f"https://xvivonne.com/invite?id={row[0]}&WA=1")
-                send = send_template(row[1], row[0], url_invite, row[5])
+                # url_invite = short_url(f"https://xvivonne.com/invite?id={row[0]}&WA=1")
+                send = send_template(row[1], row[2],)
                 if send == 200:
                     actualizar_estatus(row[0], "sent")
                     return True
@@ -84,7 +84,7 @@ def actualizar_estatus(id, status):
         cursor = conn.cursor()
         if status != "error":
             cursor.execute(
-                f"UPDATE guests SET status ='{status}',shipping=shipping+1,created_at=NOW() WHERE id_guest = '{id}'"
+                f"UPDATE guests SET status ='{status}',created_at=NOW() WHERE id_guest = '{id}'"
             )
         else:
             cursor.execute(
@@ -184,11 +184,10 @@ def send_image(phone, url_image):
     return response.status_code
 
 
-def send_template(phone, id_guest, url_invite, name):
+def send_template(phone, name):
     try:
-        invite = url_invite.split("/")[-1]
         token = token_wa()
-        os.environ["ID_WA"] = "103190916217360"
+        # os.environ["ID_WA"] = "103190916217360"
         url = f"https://graph.facebook.com/v17.0/{os.getenv('ID_WA')}/messages"
         payload = json.dumps(
             {
@@ -197,29 +196,12 @@ def send_template(phone, id_guest, url_invite, name):
                 "to": f"{phone}",
                 "type": "template",
                 "template": {
-                    "name": "invitacion_para_eventos",
+                    "name": "invitacion",
                     "language": {"code": "es_MX"},
                     "components": [
                         {
-                            "type": "header",
-                            "parameters": [
-                                {
-                                    "type": "image",
-                                    "image": {
-                                        "link": f"https://xvivonne.com/static/assets/img/QR/{id_guest}.jpg"
-                                    },
-                                }
-                            ],
-                        },
-                        {
                             "type": "body",
                             "parameters": [{"type": "text", "text": f"{name}"}],
-                        },
-                        {
-                            "type": "button",
-                            "sub_type": "url",
-                            "index": "0",
-                            "parameters": [{"type": "text", "text": f"{invite}"}],
                         },
                     ],
                 },

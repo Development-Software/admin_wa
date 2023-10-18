@@ -11,9 +11,8 @@ def get_data_guest():
     db = connect_db()
     cursor = db.cursor()
     sql = (
-        "SELECT g.id_guest,name,phone,adults,teenagers,kids,(adults+teenagers+kids)total,url,id_postday,id_room,name_legal "
+        "SELECT g.id_guest,name,phone,name_legal "
         "FROM guests g "
-        "INNER JOIN guest_person gp ON g.id_guest = gp.id_guest"
     )
     cursor.execute(sql)
     result = cursor.fetchall()

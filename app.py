@@ -11,7 +11,7 @@ app.register_blueprint(auth_bp)
 
 @app.route("/")
 def index():
-    return render_template("html/Index.html")
+    return render_template("html/login.html")
 
 
 @app.route("/post_confirm/<id>")
