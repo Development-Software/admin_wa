@@ -83,7 +83,7 @@ def food_control():
 def send_invitation():
     id_guest = request.form.get("id")
     # id = request.data.decode("utf-8")
-    print(id)
+    print(id_guest)
     sent = send_invite(id_guest)
     if sent:
         return jsonify(success=True, message="Invitación enviada correctamente")
