@@ -196,14 +196,8 @@ def send_template(phone, name):
                 "to": f"{phone}",
                 "type": "template",
                 "template": {
-                    "name": "invitacion",
+                    "name": "agradecimiento",
                     "language": {"code": "es_MX"},
-                    "components": [
-                        {
-                            "type": "body",
-                            "parameters": [{"type": "text", "text": f"{name}"}],
-                        },
-                    ],
                 },
             }
         )
